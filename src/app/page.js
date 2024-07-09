@@ -55,8 +55,8 @@ const SubtractionPractice = () => {
 
       // Reproducir audio de respuesta correcta
       const audioFiles = [
-        '/bienGino.m4a',
-        '/bienGino2.m4a',
+        '/BienGino.m4a',
+        '/BienGino2.m4a',
         // Agrega más rutas de audios según sea necesario
       ];
       const audioIndex = Math.floor(Math.random() * audioFiles.length);
