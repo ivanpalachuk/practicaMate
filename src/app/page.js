@@ -19,6 +19,7 @@ const SubtractionPractice = () => {
   const [message, setMessage] = useState('');
   const [activeBorrowIndex, setActiveBorrowIndex] = useState(null);
   const [randomImage, setRandomImage] = useState(null);
+  const [audioUrl, setAudioUrl] = useState(null); // Estado para la URL del audio
 
   useEffect(() => {
     setNumbers(generateNumbers());
@@ -51,8 +52,18 @@ const SubtractionPractice = () => {
       ];
       const randomIndex = Math.floor(Math.random() * images.length);
       setRandomImage(images[randomIndex]);
+
+      // Reproducir audio de respuesta correcta
+      const audioFiles = [
+        '/bien.m4a',
+        '/bien2.m4a',
+        // Agrega más rutas de audios según sea necesario
+      ];
+      const audioIndex = Math.floor(Math.random() * audioFiles.length);
+      setAudioUrl(audioFiles[audioIndex]);
     } else {
-      setMessage(`Incorrecto. La respuesta correcta es ${correctAnswer}`);
+      setMessage(`Nop, le pifiaste peque. La respuesta correcta es ${correctAnswer}.`);
+      // Reproducir audio de respuesta incorrecta si deseas
     }
   };
 
@@ -82,9 +93,21 @@ const SubtractionPractice = () => {
     );
   };
 
+  useEffect(() => {
+    // Función para reproducir el audio cuando cambia la URL
+    const playAudio = () => {
+      if (audioUrl) {
+        const audio = new Audio(audioUrl);
+        audio.play();
+      }
+    };
+
+    playAudio(); // Reproducir audio cuando se establece la URL
+  }, [audioUrl]);
+
   return (
     <div className="flex flex-col items-center mt-12">
-      <h1 className="text-3xl font-bold mb-8">Práctica de Restas</h1>
+      <h1 className="text-3xl font-bold mb-8">Práctica de Restas para 3ero!</h1>
 
       <div className="text-2xl mb-0 pr-6 pb-3">
         <div className="flex justify-end">
@@ -114,22 +137,19 @@ const SubtractionPractice = () => {
           type="submit"
           className="text-xl bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mt-4"
         >
-          Verificar
+          Quiero ver si esta bien :D
         </button>
       </form>
 
       {randomImage && (
-        <div className="mt-4" style={
-          {
-            backgroundImage: `url(${randomImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '250px',
-            height: '250px',
-            borderRadius: '50%',
-          }
-        }>
-        </div>
+        <div className="mt-4" style={{
+          backgroundImage: `url(${randomImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          width: '250px',
+          height: '250px',
+          borderRadius: '50%',
+        }}></div>
       )}
 
       {message && <p className="text-xl mt-4">{message}</p>}
