@@ -55,8 +55,8 @@ const SubtractionPractice = () => {
 
       // Reproducir audio de respuesta correcta
       const audioFiles = [
-        '/bien.m4a',
-        '/bien2.m4a',
+        '/bienGino.m4a',
+        '/bienGino2.m4a',
         // Agrega más rutas de audios según sea necesario
       ];
       const audioIndex = Math.floor(Math.random() * audioFiles.length);
@@ -107,7 +107,7 @@ const SubtractionPractice = () => {
 
   return (
     <div className="flex flex-col items-center mt-12">
-      <h1 className="text-3xl font-bold mb-8">Práctica de Restas para 3ero!</h1>
+      <h1 className="text-3xl font-bold mb-8">Práctica de Restas para GINO!</h1>
 
       <div className="text-2xl mb-0 pr-6 pb-3">
         <div className="flex justify-end">
